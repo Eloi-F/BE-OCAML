@@ -23,6 +23,13 @@ demo: build
 	@echo "\n   🥁  RESULT (content of outfile)  🥁\n"
 	@cat outfile
 
+draw: build
+	@echo "\n   ⚡  EXECUTING  ⚡\n"
+	./ftest.exe graphs/${graph} $(src) $(dst) outfile.gv.txt
+	@echo "\n   🥁  RESULT (content of outfile)  🥁\n"
+	@cat outfile.gv.txt
+	dot -Tsvg outfile.gv.txt > outfile.svg
+
 clean:
 	find -L . -name "*~" -delete
 	rm -f *.exe
