@@ -63,7 +63,6 @@ let export path graph =
 	node [fontname="Helvetica,Arial,sans-serif"]
 	edge [fontname="Helvetica,Arial,sans-serif"]
 	rankdir=LR;
-	node [shape = doublecircle]; 0 3 4 8;
 	node [shape = circle];|};
 
   (* Write all nodes (with fake coordinates) 

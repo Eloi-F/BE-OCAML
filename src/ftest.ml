@@ -1,6 +1,8 @@
 open Gfile
 open Tools
 
+open Ford
+
     
 let () =
 
@@ -23,8 +25,8 @@ let () =
   and outfile = Sys.argv.(4)
   
   (* These command-line arguments are not used for the moment. *)
-  and _source = int_of_string Sys.argv.(2)
-  and _sink = int_of_string Sys.argv.(3)
+  and source = int_of_string Sys.argv.(2)
+  and sink = int_of_string Sys.argv.(3)
   in
 
   (* Open file *)
@@ -39,9 +41,9 @@ let () =
   (*** test add_arc ***)
   
   let graph = gmap graph int_of_string in
-  let graph = add_arc graph 0 2 8 in
-  (*
-  let graph = parcours_profondeur graph 0 in *)
+  
+  let graph = fordfulkerson graph source sink in
+  
   let graph = gmap graph string_of_int in 
 
   (* Rewrite the graph that has been read. *)
