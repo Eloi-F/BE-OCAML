@@ -1,6 +1,7 @@
 open Graph
 open Tools
 
+(*COMMENTAIRE DE TEST*)
 
 let out_arc_not_null arc_list = List.fold_left (fun acu x -> if(x.lbl = 0) then acu else x::acu) [] arc_list
 
