@@ -36,8 +36,9 @@ let () =
   (*** test gmap ***)
   (*
   let add x = string_of_int (int_of_string x + 2) in
-  let graph = gmap graph add in *)
-
+  let graph = gmap graph add in 
+  *)
+  
   (*** test add_arc ***)
   
   let graph = gmap graph int_of_string in
