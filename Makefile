@@ -1,8 +1,8 @@
 .PHONY: all build format edit demo clean
 
 src?=0
-dst?=9
-graph?=graph7.txt
+dst?=5
+graph?=graph1.txt
 
 all: build
 
@@ -25,10 +25,9 @@ demo: build
 
 draw: build
 	@echo "\n   ⚡  EXECUTING  ⚡\n"
-	./ftest.exe graphs/${graph} $(src) $(dst) outfile.gv.txt
+	./ftest.exe graphs/${graph} $(src) $(dst) result.gv.txt
 	@echo "\n   🥁  RESULT (content of outfile)  🥁\n"
-	@cat outfile.gv.txt
-	dot -Tsvg outfile.gv.txt > outfile.svg
+	./convert.sh
 
 clean:
 	find -L . -name "*~" -delete

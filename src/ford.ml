@@ -1,5 +1,6 @@
 open Graph
 open Tools
+open Gfile
 
 (* -----------------------------------------------------------
   parcours_profondeur : gr root dest -> graph
@@ -126,7 +127,9 @@ let update_flow graph chemin =
   donné en entrée, partant de la source src jusqu'au puits 
   dest. Renvoie le graphe de flot associé.
 *)
-let rec fordfulkerson graph src dest  = 
+let fordfulkerson graph src dest  = 
+  let rec fordfulkerson_iter graph src dest i = 
     match update_flow graph (chemin_augmentant (parcours_profondeur graph src dest) src dest) with
-      | (gr,true)-> fordfulkerson gr src dest
-      | (gr,false) -> gr
+      | (gr,true)-> export ("outfile"^(string_of_int i)^".gv.txt") (gmap gr string_of_int); fordfulkerson_iter gr src dest (i+1)
+      | (gr,false) -> export ("outfile"^(string_of_int i)^".gv.txt") (gmap gr string_of_int) ; gr
+  in fordfulkerson_iter graph src dest 0

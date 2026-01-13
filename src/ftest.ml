@@ -45,9 +45,10 @@ let () =
   
   let graph = fordfulkerson graph source sink in
   
+  
   let graph = gmap graph string_of_int in 
 
-  (* Rewrite the graph that has been read. *)
   let () = export outfile graph in 
+  
   ()
 
