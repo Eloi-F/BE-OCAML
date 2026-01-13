@@ -28,7 +28,7 @@ ford: build
 	./ftest.exe graphs/${graph} $(src) $(dst) result.gv.txt
 	@echo "\n   🥁  RESULT (content of outfile)  🥁\n"
 	./convert.sh ${graph}
-	$(MAKE) clean
+
 
 
 clean:
