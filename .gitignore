@@ -1,4 +1,5 @@
 _build/
+visual_graphs/
 outfile
 *~
 *.exe

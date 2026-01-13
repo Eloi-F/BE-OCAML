@@ -7,7 +7,7 @@ if [ -z "$1" ]; then
 fi
 
 # retire nom de l'extension (le .txt)
-DIR="${1%.*}"
+DIR="visual_graphs/${1%.*}"
 
 # supprimer le dossier s'il existe déjà
 if [ -d "$DIR" ]; then
