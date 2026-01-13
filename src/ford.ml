@@ -107,6 +107,7 @@ let get_lowest_weight chemin = e_fold chemin (fun comp x -> if(x.lbl < comp || c
   partir du chemin augmentant donné. 
 *)
 let update_flow graph chemin = 
+  (*Si chemin vide : Fin de l'algorithme Ford Fulkerson*)
   if (is_empty chemin) then (graph, false) else
   let list_chemin = chemin_to_list_arc chemin in
   let min_value = get_lowest_weight chemin in
@@ -116,6 +117,15 @@ let update_flow graph chemin =
     | {src; tgt; _}::rest -> update_graph_with_list (add_arc (add_arc gr src tgt (-min_value)) tgt src min_value) rest
   in update_graph_with_list graph list_chemin
 
+
+
+(* -----------------------------------------------------------
+  fordfulkerson graph src dest
+
+  Execute l'algorithme complet de Ford Fulkerson sur le graph
+  donné en entrée, partant de la source src jusqu'au puits 
+  dest. Renvoie le graphe de flot associé.
+*)
 let rec fordfulkerson graph src dest  = 
     match update_flow graph (chemin_augmentant (parcours_profondeur graph src dest) src dest) with
       | (gr,true)-> fordfulkerson gr src dest

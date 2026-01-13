@@ -34,3 +34,6 @@ clean:
 	find -L . -name "*~" -delete
 	rm -f *.exe
 	dune clean
+
+soutenance:build
+	@echo "coucou"
