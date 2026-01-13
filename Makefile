@@ -23,16 +23,15 @@ demo: build
 	@echo "\n   🥁  RESULT (content of outfile)  🥁\n"
 	@cat outfile
 
-draw: build
+ford: build
 	@echo "\n   ⚡  EXECUTING  ⚡\n"
 	./ftest.exe graphs/${graph} $(src) $(dst) result.gv.txt
 	@echo "\n   🥁  RESULT (content of outfile)  🥁\n"
-	./convert.sh
+	./convert.sh ${graph}
+	$(MAKE) clean
+
 
 clean:
 	find -L . -name "*~" -delete
 	rm -f *.exe
 	dune clean
-
-soutenance:build
-	@echo "coucou"

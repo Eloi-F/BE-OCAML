@@ -6,7 +6,7 @@ open Gfile
   parcours_profondeur : gr root dest -> graph
 
   Effectue un parcours en profondeur sur gr en partant de root
-  jusqu'à trouver dest. Renvoie le graphe complet de 
+  jusqu'à trouver dest. Renvoie l'arbre complet de 
   l'exploration de gr contenant le parcours.
 *)
 
@@ -22,7 +22,7 @@ let parcours_profondeur gr root dest =
     |  [] -> graph (*Plus d'arc à visiter sur ce noeud*)
     |  { src; tgt; lbl }::rest -> 
 
-      (*Arc déjà visité => on passe au suivant*)
+      (*Noeud déjà visité => on passe au suivant*)
       if List.exists (fun node -> tgt = node) acu then parcours rest id_root  acu graph 
 
       (*Puits atteint => on a trouvé un chemin de src à dest*)
@@ -130,6 +130,6 @@ let update_flow graph chemin =
 let fordfulkerson graph src dest  = 
   let rec fordfulkerson_iter graph src dest i = 
     match update_flow graph (chemin_augmentant (parcours_profondeur graph src dest) src dest) with
-      | (gr,true)-> export ("outfile"^(string_of_int i)^".gv.txt") (gmap gr string_of_int); fordfulkerson_iter gr src dest (i+1)
-      | (gr,false) -> export ("outfile"^(string_of_int i)^".gv.txt") (gmap gr string_of_int) ; gr
+      | (gr,true)-> export ("ford_iter"^(string_of_int i)^".gv.txt") (gmap gr string_of_int); fordfulkerson_iter gr src dest (i+1)
+      | (gr,false) -> gr
   in fordfulkerson_iter graph src dest 0
