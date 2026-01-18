@@ -17,6 +17,7 @@ A [`Makefile`](Makefile) provides some useful commands:
  - `make format` to indent the entire project
  - `make edit` to open the project in VSCode
  - `make clean` to remove build artifacts
+ - `make draw src=<src> dst=<dst> graph=<graph>` to run the Ford-Fulkerson algorithms and see all the iterations until the final result on a visual support.
 
 In case of trouble with the VSCode extension (e.g. the project does not build, there are strange mistakes), a common workaround is to (1) close vscode, (2) `make clean`, (3) `make build` and (4) reopen vscode (`make edit`).
 
